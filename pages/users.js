@@ -1,3 +1,4 @@
+import Link from 'next/link'
 import { getSession } from 'next-auth/react'
 import { users } from '../lib/users'
 
@@ -12,6 +13,9 @@ export default function Users({ users }) {
           </li>
         ))}
       </ul>
+      <Link className="mt-4 inline-block text-blue-600 underline" href="/">
+        Back
+      </Link>
     </div>
   )
 }
