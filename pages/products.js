@@ -1,6 +1,5 @@
 import Link from 'next/link'
 import { getSession } from 'next-auth/react'
-import { products } from '../lib/products'
 
 export default function Products({ products }) {
   return (
@@ -30,6 +29,11 @@ export async function getServerSideProps(context) {
       }
     }
   }
+
+  const backendUrl = process.env.BACKEND_URL || 'http://localhost:8080'
+  const res = await fetch(`${backendUrl}/products`)
+  const products = await res.json()
+
   return {
     props: { products }
   }
