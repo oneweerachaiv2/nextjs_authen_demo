@@ -1,6 +1,7 @@
 # Next.js Portal Demo
 
 This project demonstrates a basic portal built with Next.js and NextAuth. It includes product management and user management pages with simple role based access control.
+It now uses **Tailwind CSS** for styling.
 
 ## Features
 
@@ -19,6 +20,7 @@ npm run dev
 ```
 
 Then open [http://localhost:3000](http://localhost:3000) in your browser.
+Tailwind CSS is configured in `styles/globals.css`.
 
 ### Backend (Go)
 
