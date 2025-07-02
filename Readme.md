@@ -22,6 +22,9 @@ npm run dev
 Then open [http://localhost:3000](http://localhost:3000) in your browser.
 Tailwind CSS is configured in `styles/globals.css`.
 
+The products page now fetches its data from the Go backend. Set `BACKEND_URL` in
+`.env.local` if your backend runs on a different address.
+
 ### Backend (Go)
 
 The repository also includes a small Go server exposing the user and product
