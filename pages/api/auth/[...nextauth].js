@@ -11,18 +11,27 @@ export default NextAuth({
         password: { label: 'Password', type: 'password' }
       },
       async authorize(credentials) {
+        if (!credentials?.email || !credentials?.password) {
+          return null
+        }
+
         const user = users.find(
           u => u.email === credentials.email && u.password === credentials.password
         )
+        
         if (user) {
-          return user
+          return {
+            id: user.id,
+            email: user.email,
+            role: user.role,
+          }
         }
         return null
       }
     })
   ],
   callbacks: {
-    async session({ session, token, user }) {
+    async session({ session, token }) {
       if (token) {
         session.user.role = token.role
         session.user.id = token.id
@@ -39,5 +48,10 @@ export default NextAuth({
   },
   pages: {
     signIn: '/login'
-  }
+  },
+  session: {
+    strategy: 'jwt',
+  },
+  secret: process.env.NEXTAUTH_SECRET,
+  debug: process.env.NODE_ENV === 'development',
 })
