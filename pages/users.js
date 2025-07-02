@@ -3,11 +3,13 @@ import { users } from '../lib/users'
 
 export default function Users({ users }) {
   return (
-    <div>
-      <h1>User Management</h1>
-      <ul>
+    <div className="p-8">
+      <h1 className="text-2xl font-bold mb-4">User Management</h1>
+      <ul className="space-y-2">
         {users.map(u => (
-          <li key={u.id}>{u.name} - {u.email} ({u.role})</li>
+          <li key={u.id} className="border rounded p-4 shadow">
+            {u.name} - {u.email} ({u.role})
+          </li>
         ))}
       </ul>
     </div>
